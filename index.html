@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>С Днём Рождения!</title>
+  <meta name="description" content="Тёплое поздравление с Днём Рождения и подарок PS Plus" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#0d0f14;
+      --card:#121622;
+      --accent:#ffd54f;
+      --accent-2:#6aa9ff;
+      --text:#e8ecf5;
+      --muted:#a8b2c3;
+      --btn:#1f6feb;
+      --btn-hover:#2b7bff;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(106,169,255,.25), transparent 60%),
+        radial-gradient(900px 500px at -10% 110%, rgba(255,213,79,.15), transparent 60%),
+        linear-gradient(180deg,#0b0e13, #0d0f14 40%, #0b0e13);
+      background-attachment: fixed;
+      overflow-x:hidden;
+    }
+    .container{
+      max-width:980px;
+      margin:0 auto;
+      padding:32px 20px 80px;
+    }
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:16px 0 8px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;
+    }
+    .logo{
+      width:44px;height:44px;border-radius:12px;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      box-shadow: 0 10px 30px rgba(43,123,255,.35), inset 0 0 0 2px rgba(255,255,255,.15);
+    }
+    .brand h1{
+      margin:0;font-size:20px;letter-spacing:.4px;font-weight:800;
+      background:linear-gradient(180deg,#fff,#cfe3ff);
+      -webkit-background-clip:text;background-clip:text;color:transparent
+    }
+    .date{
+      color:var(--muted);font-size:14px
+    }
+    .hero{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;
+    }
+    @media (max-width:900px){.hero{grid-template-columns:1fr;}}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:20px;padding:28px;
+      box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
+      backdrop-filter: blur(8px);
+    }
+    .title{
+      font-size:40px;line-height:1.1;margin:0 0 12px;font-weight:800;
+      letter-spacing:.4px
+    }
+    .subtitle{color:var(--muted);font-size:16px;margin:0 0 22px}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 22px}
+    .badge{
+      background:rgba(106,169,255,.12);
+      color:#cfe3ff;border:1px solid rgba(106,169,255,.25);
+      padding:6px 10px;border-radius:999px;font-size:12px
+    }
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .btn{
+      appearance:none;border:0;cursor:pointer;text-decoration:none;
+      padding:14px 18px;border-radius:12px;font-weight:700;font-size:15px;
+      color:#fff;background:var(--btn);
+      box-shadow:0 10px 30px rgba(31,111,235,.35);
+      transition:transform .08s ease, background .15s ease, box-shadow .15s ease;
+      display:inline-flex;align-items:center;gap:10px
+    }
+    .btn:hover{background:var(--btn-hover);transform:translateY(-1px)}
+    .btn.secondary{
+      background:transparent;color:var(--text);
+      border:1px solid rgba(255,255,255,.16)
+    }
+    .gift{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px dashed rgba(255,255,255,.18);
+      border-radius:16px;padding:14px 16px;margin-top:18px;color:#ffefc2
+    }
+    .media{
+      position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:18px
+    }
+    .media img{
+      width:100%;height:100%;object-fit:cover;display:block;
+      filter:saturate(1.1) contrast(1.03) brightness(1.06);
+      transform:scale(1.03)
+    }
+    .spark{
+      position:absolute;inset:auto 12px 12px auto;
+      background:rgba(13,15,20,.75);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;padding:8px 10px;font-size:12px;color:#d4e2ff
+    }
+    section{margin-top:28px}
+    .poem{font-size:16px;line-height:1.7;color:#eaf0ff}
+    .poem p{margin:0 0 12px}
+    footer{margin-top:40px;color:var(--muted);font-size:13px;text-align:center}
+    .heart{color:#ff8fa3}
+    .confetti{
+      position:fixed;inset:0;pointer-events:none;z-index:1
+    }
+  </style>
+</head>
+<body>
+  <canvas class="confetti" id="confetti"></canvas>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Для моей подруги</h1>
+      </div>
+      <div class="date">01 октября 2025</div>
+    </header>
+
+    <main class="hero">
+      <div class="card">
+        <h2 class="title">С днём рождения, Kate! ✨</h2>
+        <img src="katebd1.jpeg" alt="Игровой контроллер и светлые огни — атмосфера праздника" style="width:100%;border-radius:16px;margin:18px 0;box-shadow:0 10px 30px rgba(0,0,0,.25);" />
+        <p class="subtitle">Пусть этот год будет полон побед, улыбок и игр, в которые хочется возвращаться.</p>
+
+        <div class="badges">
+          <span class="badge">дружба</span>
+          <span class="badge">радость</span>
+          <span class="badge">PS Plus</span>
+        </div>
+
+        <div class="actions">
+          <!-- ВСТАВЬ ССЫЛКУ НА PS PLUS -->
+          <a class="btn" href="t.me/fxckingoups" target="_blank" rel="noopener">
+            🎁 Открыть подарок PS Plus
+          </a>
+          <a class="btn secondary" href="#poem">Прочитать пожелание</a>
+        </div>
+
+        <div class="gift">Этот год — для новых впечатлений: кооп-вечеров, топовых релизов и скриншотов в альбом. Подарок уже ждёт тебя внутри!</div>
+      </div>
+
+      <div class="media card">
+        <img src="katebd2.jpeg" alt="Игровой контроллер и светлые огни — атмосфера праздника" />
+        <div class="spark">да мы ваще а че</div>
+      </div>
+    </main>
+
+    <section id="poem" class="card">
+      <div class="poem">
+        <p>Пусть каждый квест окажется по силам,</p>
+        <p>Лут — щедрым, а сопартийцы — несомненно милы.</p>
+        <p>Пускай удача будет рядом в каждом патче,</p>
+        <p>А радость — в будни, как в релизный вечер пятницы.</p>
+        <p>С днём рождения! Твой PS Plus уже ждёт тебя 🎮</p>
+      </div>
+      <div class="actions" style="margin-top:16px">
+        <!-- ВСТАВЬ ССЫЛКУ НА PS PLUS (дубль для удобства) -->
+        <a class="btn" href="ТЕБЕ-НУЖНУЮ-ССЫЛКУ" target="_blank" rel="noopener">Перейти к подарку</a>
+        <button class="btn secondary" id="copyLink">Скопировать ссылку подарка</button>
+      </div>
+    </section>
+
+    <footer>
+      Сделано с любовью <span class="heart">❤</span> специально для тебя
+    </footer>
+  </div>
+
+  <script>
+    // Копирование ссылки
+    const copyBtn = document.getElementById('copyLink');
+    if (copyBtn){
+      copyBtn.addEventListener('click', async () => {
+        const link = document.querySelector('a.btn[href]').getAttribute('href');
+        try{
+          await navigator.clipboard.writeText(link);
+          copyBtn.textContent = 'Ссылка скопирована!';
+          setTimeout(()=>copyBtn.textContent='Скопировать ссылку подарка',1800);
+        }catch(e){
+          alert('Не удалось скопировать ссылку');
+        }
+      });
+    }
+
+    // Простая конфетти-анимация без библиотек
+    (function(){
+      const c = document.getElementById('confetti');
+      const ctx = c.getContext('2d');
+      let W, H, parts = [];
+      const colors = ['#ffd54f','#6aa9ff','#ff8fa3','#a5ffb5','#c7a6ff'];
+
+      function resize(){
+        W = c.width = window.innerWidth;
+        H = c.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      function spawn(n=120){
+        for(let i=0;i<n;i++){
+          parts.push({
+            x: Math.random()*W,
+            y: -20 - Math.random()*H,
+            r: 4 + Math.random()*6,
+            s: 1 + Math.random()*2,
+            a: Math.random()*Math.PI*2,
+            c: colors[(Math.random()*colors.length)|0],
+            t: Math.random()*360
+          });
+        }
+      }
+
+      function draw(){
+        ctx.clearRect(0,0,W,H);
+        for(const p of parts){
+          p.y += p.s;
+          p.x += Math.sin(p.a)*0.8;
+          p.t += p.s*2;
+
+          ctx.save();
+          ctx.translate(p.x,p.y);
+          ctx.rotate(p.t*Math.PI/180);
+          ctx.fillStyle = p.c;
+          ctx.fillRect(-p.r, -p.r/2, p.r*2, p.r);
+          ctx.restore();
+
+          if(p.y > H+20) {
+            p.y = -20; p.x = Math.random()*W;
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+
+      spawn(160);
+      draw();
+    })();
+  </script>
+</body>
+</html>
