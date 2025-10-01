@@ -2,12 +2,17 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>С Днём Рождения!</title>
   <meta name="description" content="For Kate Birthday" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+   <!-- Убираем Safari UI при добавлении на главный экран -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Удостоверение">
+<link rel="apple-touch-icon" href="id.jpg">
   <style>
     :root{
       --bg:#0d0f14;
@@ -31,11 +36,12 @@
         linear-gradient(180deg,#0b0e13, #0d0f14 40%, #0b0e13);
       background-attachment: fixed;
       overflow-x:hidden;
+      -webkit-tap-highlight-color: transparent;
     }
     .container{
-      max-width:980px;
+      max-width:600px;
       margin:0 auto;
-      padding:32px 20px 80px;
+      padding:24px 8px 60px;
     }
     header{
       display:flex;
@@ -72,11 +78,28 @@
       border-radius:20px;padding:28px;
       box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
       backdrop-filter: blur(8px);
+      padding:20px;
+      border-radius:18px;
     }
     .title{
-      font-size:40px;line-height:1.1;margin:0 0 12px;font-weight:800;
-      letter-spacing:.4px;
+      font-size:36px;
+      line-height:1.15;
+      margin:0 0 18px;
+      font-weight:900;
+      letter-spacing:.5px;
       text-align:center;
+      color:#ff8fa3;
+      text-shadow:0 2px 12px rgba(255,143,163,0.18), 0 1px 0 #fff;
+      background:linear-gradient(90deg,#ff8fa3 60%,#ffd54f 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    @media (min-width:430px){
+      .container{max-width:430px;padding:32px 16px 80px;}
+      .title{font-size:48px;}
+      .card{padding:28px;border-radius:20px;}
+      .btn{font-size:18px;min-height:52px;}
     }
     .subtitle{color:var(--muted);font-size:16px;margin:0 0 22px}
     .badges{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 22px}
@@ -92,7 +115,14 @@
       color:#fff;background:var(--btn);
       box-shadow:0 10px 30px rgba(31,111,235,.35);
       transition:transform .08s ease, background .15s ease, box-shadow .15s ease;
-      display:inline-flex;align-items:center;gap:10px
+      display:inline-flex;align-items:center;gap:10px;
+      min-width:180px;
+      min-height:48px;
+      font-size:17px;
+      padding:16px 22px;
+      border-radius:14px;
+      transition:transform .08s, background .15s, box-shadow .15s;
+      touch-action:manipulation;
     }
     .btn:hover{background:var(--btn-hover);transform:translateY(-1px)}
     .btn.secondary{
@@ -110,7 +140,9 @@
     .media img{
       width:100%;height:100%;object-fit:cover;display:block;
       filter:saturate(1.1) contrast(1.03) brightness(1.06);
-      transform:scale(1.03)
+      transform:scale(1.03);
+      border-radius:16px;
+      transition:filter .2s, transform .2s;
     }
     .spark{
       position:absolute;inset:auto 12px 12px auto;
@@ -125,6 +157,12 @@
     .heart{color:#ff8fa3}
     .confetti{
       position:fixed;inset:0;pointer-events:none;z-index:1
+    }
+    @media (min-width:430px){
+      .container{max-width:430px;padding:32px 16px 80px;}
+      .title{font-size:48px;}
+      .card{padding:28px;border-radius:20px;}
+      .btn{font-size:18px;min-height:52px;}
     }
   </style>
 </head>
